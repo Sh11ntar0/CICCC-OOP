@@ -4,6 +4,9 @@ package lab1;
  * @author Derrick Park
  */
 public class Model {
+    /**
+     * Constants
+     */
     public static final int INCHES_PER_FOOT = 12;
     public static final double POUNDS_PER_KG = 2.2046;
     public static final int BASE_RATE_DOLLARS_PER_HOUR = 60;
@@ -13,6 +16,9 @@ public class Model {
     public static final int TRAVEL_BONUS_DOLLARS_PER_HOUR = 4;
     public static final int SMOKER_DEDUCTION_DOLLARS_PER_HOUR = 10;
 
+    /**
+     * Instance variables (data fields)
+     */
     private String firstName;
     private String lastName;
     private int height;
@@ -20,10 +26,13 @@ public class Model {
     private boolean canTravel;
     private boolean smokes;
 
-    public Model() {
-    }
+    /**
+     * Default constructor
+     */
+    public Model() { }
 
     /**
+     * Second constructor with 6 params
      *
      * @param firstName
      * @param lastName
@@ -33,184 +42,140 @@ public class Model {
      * @param smokes
      */
     public Model(String firstName, String lastName, int height, double weight, boolean canTravel, boolean smokes) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setHeight(height);
-        this.setWeight(weight);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setHeight(height);
+        setWeight(weight);
         this.canTravel = canTravel;
         this.smokes = smokes;
     }
 
     /**
-     *
+     * Third constructor with 4 params
      * @param firstName
      * @param lastName
      * @param height
      * @param weight
      */
     public Model(String firstName, String lastName, int height, double weight) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setHeight(height);
-        this.setWeight(weight);
-        this.canTravel = true;
-        this.smokes = false;
+        this(firstName, lastName, height, weight, false, false);
     }
 
-    /**
-     *
-     * @return
-     */
+    public String getHeightInFeetAndInches() {
+        // 1 foot == 12 inches
+        int feet = height / INCHES_PER_FOOT;
+        int inches = height % INCHES_PER_FOOT;
+        String inchUnit;
+        if (inches == 0) {
+            inchUnit = "";
+        } else if (inches == 1) {
+            inchUnit = "1 inch";
+        } else {
+            inchUnit = inches + " inches";
+        }
+        return feet + " feet " + inchUnit;
+    }
+
+    public long getWeightKg() {
+        return Math.round(weight / POUNDS_PER_KG);
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     *
-     * @return
-     */
+    public final void setFirstName(String firstName) {
+        if (firstName.length() >= 3 && firstName.length() <= 20) {
+            this.firstName = firstName;
+        }
+    }
+
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     *
-     * @return
-     */
+    public final void setLastName(String lastName) {
+        if (lastName.length() >= 3 && lastName.length() <= 20) {
+            this.lastName = lastName;
+        }
+    }
+
     public int getHeight() {
         return height;
     }
 
-    /**
-     *
-     * @return
-     */
+    public final void setHeight(int height) {
+        if (height >= 24 && height <= 84) {
+            this.height = height;
+        }
+    }
+
+    public void setHeight(int feet, int inches) {
+        this.height = feet * INCHES_PER_FOOT + inches;
+    }
+
     public double getWeight() {
         return weight;
     }
 
-    /**
-     *
-     * @return
-     */
+    public final void setWeight(double weight) {
+        if (weight >= 80 && weight <= 280) {
+            this.weight = weight;
+        }
+    }
+
+    public void setWeight(long kilograms) {
+        this.weight = kilograms * POUNDS_PER_KG;
+    }
+
     public boolean isCanTravel() {
         return canTravel;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean isSmokes() {
-        return smokes;
-    }
-
-    /**
-     *
-     * @param firstName
-     */
-    public void setFirstName(String firstName) {
-
-        if( firstName.length() > 3 || 20 >= firstName.length()){
-            System.out.println("first name and last name must be 3 to 20 characters long or else they won't be stored");
-        }else{
-            this.firstName = firstName;
-        }
-
-    }
-
-    /**
-     *
-     * @param lastName
-     */
-    public void setLastName(String lastName) {
-        if( lastName.length() > 3 || 20 > lastName.length()){
-            System.out.println("first name and last name must be 3 to 20 characters long or else they won't be stored");
-        }else{
-            this.lastName = lastName;
-        }
-
-    }
-
-    /**
-     *
-     * @param height
-     */
-    public void setHeight(int height) {
-        if( height < 24 ||  height > 84){
-            System.err.println("height must be 24 to 84 inches or it won't be stored");
-            return;
-        }
-        this.height = height;
-
-
-    }
-    public void setHeight(int inches){
-        this.setHeight( / TALL_INCHES);
-    }
-
-    /**
-     *
-     * @param canTravel
-     */
     public void setCanTravel(boolean canTravel) {
         this.canTravel = canTravel;
     }
 
-    /**
-     *
-     * @param smokes
-     */
+    public boolean isSmokes() {
+        return smokes;
+    }
+
     public void setSmokes(boolean smokes) {
         this.smokes = smokes;
     }
 
-    /**
-     * Set the weight in pounds
-     * @param pounds pounds (lb)
-     */
-    public void setWeight(double pounds) {
-        if( weight < 80 || weight > 280  ){
-            System.out.println("weight must be 80 to 280 pounds or it won't be stored\n");
-        }else{
-            this.weight = weight;
-        }
-
-
-    }
-
-    public void setWeight(long kilograms){
-        this.setWeight(weight / POUNDS_PER_KG);
-    }
-    /**
-     * Returns the height in feet and inches
-     * @return the height in feet and inches
-     */
-    public String getHeightInFeetAndInches() {
-        int feet = height / INCHES_PER_FOOT;
-        int inch = height % INCHES_PER_FOOT;
-        String strHeight = feet + " feet ";
-
-        if (inch == 0){
-            return strHeight;
-        }
-        else if(inch == 1){
-            return strHeight + inch + " inch";
-        }
-        else
-            return strHeight + inch + " inches";
-    }
-
-    /**
-     * Prints detail information about this Model
-     */
     public void printDetails() {
-
+        System.out.println("Name: " + firstName + " " + lastName);
+        System.out.println("Height: " + height + " inches");
+        System.out.println("Weight: " + weight + " pounds");
+        String travelMessage = canTravel ? "Does travel" : "Does not travel";
+        System.out.println(travelMessage);
+        String smokeMessage = smokes ? "Does smoke" : "Does not smoke";
+        System.out.println(smokeMessage);
     }
 
-    public long getWeightKg(){
-        return 0;
-
+    public int calculatePayDollarsPerHour() {
+        int salary = BASE_RATE_DOLLARS_PER_HOUR;
+        if (height > TALL_INCHES && weight < THIN_POUNDS) {
+            salary += TALL_THIN_BONUS_DOLLARS_PER_HOUR;
+        }
+        if (canTravel) {
+            salary += TRAVEL_BONUS_DOLLARS_PER_HOUR;
+        }
+        if (smokes) {
+            salary -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
+        }
+        return salary;
     }
 
+    public void displayModelDetails() {
+        System.out.println("Name: " + firstName + " " + lastName);
+        System.out.println("Height: " + getHeightInFeetAndInches());
+        System.out.println("Weight: " + getWeight() + " pounds");
+        String travelMessage = canTravel ? "yep" : "nope";
+        System.out.println("Travels: " + travelMessage);
+        String smokeMessage = smokes ? "yep" : "nope";
+        System.out.println("Smokes: " + smokeMessage);
+        System.out.println("Hourly rate: $" + calculatePayDollarsPerHour());
+    }
 }
