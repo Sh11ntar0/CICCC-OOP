@@ -8,7 +8,7 @@ public class WhereIsIt {
     int[] arr = new int[10];
     Random random = new Random();
     for (int i = 0; i < arr.length; i++) {
-      arr[i] = random.nextInt(100) + 1;
+      arr[i] = random.nextInt(10) + 1;
     }
     System.out.print("array: ");
     for (int i : arr) {
