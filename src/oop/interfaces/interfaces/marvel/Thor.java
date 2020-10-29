@@ -27,6 +27,8 @@ public class Thor extends SuperHero implements Flyable {
   public void fly(int distance) {
     if (distance > 0 && getHealth() > 0) {
       System.out.println("Flying...");
+
     }
   }
 }
+
