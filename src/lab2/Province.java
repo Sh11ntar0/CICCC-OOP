@@ -85,7 +85,6 @@ public class Province {
     return "The capital of " + name + " (population. " + population + ") is " + capital + ".";
   }
 
-
   // helper methods
   private boolean isValidProvince(String name) {
     // local array

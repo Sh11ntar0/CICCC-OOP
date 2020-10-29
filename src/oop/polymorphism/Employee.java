@@ -1,11 +1,8 @@
-package oop.abstractclasses;
+package oop.polymorphism;
 
 import java.util.Date;
 
-// 1. abstract class cannot be instantiated.
-// 2. abstract class can have abstract methods.
-// 3. subclasses must implement abstract methods.
-public abstract class Employee {
+public class Employee {
   private String employeeId;
   private long salary;
   private Date startDate;
@@ -25,11 +22,9 @@ public abstract class Employee {
     return salary;
   }
 
-  public final Date getStartDate() {
+  public Date getStartDate() {
     return startDate;
   }
-
-  public abstract void work();
 
   @Override
   public boolean equals(Object o) {

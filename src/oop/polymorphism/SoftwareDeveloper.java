@@ -1,8 +1,8 @@
-package oop.abstractclasses;
+package oop.polymorphism;
 
 import java.util.Date;
 
-public final class SoftwareDeveloper extends Employee {
+public class SoftwareDeveloper extends Employee {
   private String specialty;
   private static final double BONUS_RATE = 0.5;
 
@@ -23,11 +23,6 @@ public final class SoftwareDeveloper extends Employee {
   @Override
   public long getSalary() {
     return super.getSalary() + Math.round(super.getSalary() * BONUS_RATE);
-  }
-
-  @Override
-  public void work() {
-    System.out.println("Coding...");
   }
 
   @Override

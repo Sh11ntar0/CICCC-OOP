@@ -179,3 +179,4 @@ public class Model {
         System.out.println("Hourly rate: $" + calculatePayDollarsPerHour());
     }
 }
+

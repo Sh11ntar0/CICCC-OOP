@@ -1,4 +1,4 @@
-package oop.abstractclasses;
+package oop.polymorphism;
 
 import java.util.Date;
 
@@ -17,11 +17,6 @@ public class DataScientist extends Employee {
 
   public void setDatabaseCode(String databaseCode) {
     this.databaseCode = databaseCode;
-  }
-
-  @Override
-  public void work() {
-    System.out.println("Writing sql query to get some data...");
   }
 
   @Override
