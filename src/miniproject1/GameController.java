@@ -3,6 +3,7 @@ package miniproject1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import miniproject1.Question;
 
 /**
  * The {@code GameController} class represents an instance of a controller for this game.
