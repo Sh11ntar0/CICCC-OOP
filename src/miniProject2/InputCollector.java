@@ -118,13 +118,12 @@ public class InputCollector {
           break;
 
 
-
-
-
-
         case "5":
           again = false;
+          System.out.println("bye!");
           break;
+
+
         default:
           System.out.println("Invalid Input. Enter number between 1 and 5.");
       }
